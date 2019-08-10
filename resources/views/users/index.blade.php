@@ -131,12 +131,13 @@
             });
 
             $('#create_user_btn').click(function () {
-                $('#usersForm')
-                    .trigger("reset")
-                    .attr("action","/users")
-                    .attr('method','POST');
-                $('#modelHeading').html("Create New User");
-                $('#modalUsersCreate').modal('show');
+                $('#modalUsersCreate').on('shown.bs.modal', function(){
+                    $('#usersForm')
+                        .trigger("reset")
+                        .attr("action","/users")
+                        .attr('method','POST');
+                    $('#modelHeading').html("Create New User");
+                }).modal('show');
             });
 
             $('#usersForm').on('submit',function(e){
